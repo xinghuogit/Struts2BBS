@@ -21,7 +21,7 @@ package com.xh.bbs.model;
 public class Category {
 	private int id;
 	private String name;
-	private String descrtiption;
+	private String descr;
 
 	public int getId() {
 		return id;
@@ -39,11 +39,11 @@ public class Category {
 		this.name = name;
 	}
 
-	public String getDescrtiption() {
-		return descrtiption;
+	public String getDescr() {
+		return descr;
 	}
 
-	public void setDescrtiption(String descrtiption) {
-		this.descrtiption = descrtiption;
+	public void setDescr(String descr) {
+		this.descr = descr;
 	}
 }

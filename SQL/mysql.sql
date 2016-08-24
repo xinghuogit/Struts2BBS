@@ -6,7 +6,7 @@ create table _category
 (
 id int primary key auto_increment, 
 name varchar(50), 
-descrtiption varchar(200)
+descr varchar(200)
 );
 
 

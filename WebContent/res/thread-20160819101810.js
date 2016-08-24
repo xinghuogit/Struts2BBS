@@ -1,2 +1,0 @@
-document.write(unescape("%3Ca%20href%3D%22http%3A//www.henghost.com/halfprice.shtml%22%20target%3D%22_blank%22%20title%3D%22%u6052%u521B%22%3E%3Cimg%20src%3D%22https%3A//adman.henghost.com/data/updata/20160823114136.gif%22%20border%3D%220%22%20width%3D%22970%22%20height%3D%2290%22%20/%3E%0A%3C/a%3E"));
-document.write(amsurl+'counter.js?gid=thread-20160819101810&atyh='+atyh+'"></script>');

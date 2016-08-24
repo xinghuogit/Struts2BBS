@@ -117,15 +117,15 @@ public class DB {
 	 *            SQL语句
 	 * @return PreparedStatement PStatement 执行SQL语句带参的语句
 	 */
-	public static PreparedStatement getPStatement(Connection connection,
+	public static PreparedStatement getPStatement(Connection conn,
 			String sql) {
-		PreparedStatement PStatement = null;
+		PreparedStatement ps = null;
 		try {
-			PStatement = connection.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return PStatement;
+		return ps;
 	}
 
 	/**
@@ -256,14 +256,14 @@ public class DB {
 	 * @param resultSet
 	 *            关闭结果集
 	 */
-	public static void close(ResultSet resultSet) {
-		if (resultSet != null) {
+	public static void close(ResultSet rs) {
+		if (rs != null) {
 			try {
-				resultSet.close();
+				rs.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			resultSet = null;
+			rs = null;
 		}
 	}
 
@@ -286,14 +286,14 @@ public class DB {
 	 * @param connection
 	 *            关闭数据库连接connection
 	 */
-	public static void close(Connection connection) {
-		if (connection != null) {
+	public static void close(Connection conn) {
+		if (conn != null) {
 			try {
-				connection.close();
+				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			connection = null;
+			conn = null;
 		}
 	}
 
