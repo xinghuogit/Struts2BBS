@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0020)http://bbs.bccn.net/ -->
 
-<%@taglib uri="/struts-tags" prefix="s"%>
+<%@taglib uri="/struts-tags" prefix="s"%>	
 <%
 	List<Category> list = new ArrayList<Category>();
 	//list = CategoryService.getInstans().list();
@@ -201,26 +201,23 @@
 </style>
 	<!--主板开始-->
 	<div class="div_top" style="margin-top: 10px;">BCCN - 主版</div>
-
+	
 	<%-- <%
 		for(int i = 0; i < list.size(); i++ ){
 		Category c = list.get(i);
 	%> --%>
 	<s:iterator value="categorys" var="c">
 
-		<div class="div1">
-			<table class="table1" cellspacing="0" cellpadding="0" border="0">
-				<tbody>
-					<tr>
-						<td class="td_l_no" rowspan="2">&nbsp;</td>
-						<td class="td_m"><a href="http://bbs.bccn.net/?gid=232"><font
-								color="#000066"><s:property value="#c.name" /></font></a>
-							<ul>
-								<li><s:property value="#c.descr" /></li>
-								<s:property value="#c.id" />
-								<li><a href="admin/Category_delete?id=<s:property value="#c.id"/>">删除分类</a></li>
-								<li><a href="admin/Category_updateInput?id=<s:property value="#c.id"/>">更新分类</a></li>
-								<!-- 
+	<div class="div1">
+		<table class="table1" cellspacing="0" cellpadding="0" border="0">
+			<tbody>
+				<tr>
+					<td class="td_l_no" rowspan="2">&nbsp;</td>
+					<td class="td_m"><a href="http://bbs.bccn.net/?gid=232"><font
+							color="#000066"><s:property value="#c.name"/></font></a>
+						<ul>
+							<li><s:property value="#c.descr"/></li>
+							<!-- 
 							<li><a href="http://bbs.bccn.net/forum-10-1.html">ASP论坛</a></li>
 							<li><a href="http://bbs.bccn.net/forum-15-1.html">JavaScript</a></li>
 							<li><a href="http://bbs.bccn.net/forum-13-1.html">PHP论坛</a></li>
@@ -229,11 +226,22 @@
 							<li><a href="http://bbs.bccn.net/forum-274-1.html">Dart论坛</a></li>
 							<li><a href="http://bbs.bccn.net/forum-19-1.html">WEB前端(UI)</a></li>
 							 -->
-							</ul></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+						</ul></td>
+					<td class="td_rt">主题：<a
+						href="http://bbs.bccn.net/redirect.php?tid=468169&goto=lastpost#lastpost">前段新手小白求教一个关于h
+							...</a><br>作者：fengpiaoguo
+					</td>
+				</tr>
+				<tr>
+					<td class="td_b"></td>
+					<td class="td_rb"><img src="./res/forum_today.gif"
+						title="今日发贴数"> <font color="red">0</font> <img
+						src="./res/forum_topic.gif" title="主题帖数"> 39051 <img
+						src="./res/forum_post.gif" title="发帖总数">193344</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	</s:iterator>
 	<%-- <%
 		}

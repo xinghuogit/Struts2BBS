@@ -16,6 +16,8 @@ package com.xh.bbs.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.xh.bbs.db.DB;
@@ -28,11 +30,22 @@ import com.xh.bbs.model.Category;
 public class CategoryService {
 	private Connection conn = null;
 	private PreparedStatement ps = null;
+	private ResultSet rs = null;
+
+	// static {
+	// if (cs == null) {
+	// cs = new CategoryService();
+	// }
+	// }
+	//
+	// public static CategoryService getInstans() {
+	// return cs;
+	// }
 
 	public void add(Category c) {
 		try {
 			conn = DB.getConnection();
-			String sql = "insert into category values(null, ?, ?)";
+			String sql = "insert into _category values(null, ?, ?)";
 			ps = DB.getPStatement(conn, sql);
 			ps.setString(1, c.getName());
 			ps.setString(2, c.getDescr());
@@ -46,7 +59,27 @@ public class CategoryService {
 	}
 
 	public List<Category> list() {
-		return null;
+		List<Category> list = new ArrayList<Category>();
+		Category c = null;
+		try {
+			conn = DB.getConnection();
+
+			String sql = "select * from _category";
+			rs = DB.executeQuery(conn, sql);
+			while (rs.next()) {
+				c = new Category();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setDescr(rs.getString("descr"));
+				list.add(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(rs);
+			DB.close(conn);
+		}
+		return list;
 	}
 
 	public void delete(Category c) {
@@ -54,10 +87,56 @@ public class CategoryService {
 	}
 
 	public void deleteById(int id) {
-
+		try {
+			conn = DB.getConnection();
+			String sql = "delete from _category where id = ?";
+			ps = DB.getPStatement(conn, sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(ps);
+			DB.close(conn);
+		}
 	}
 
 	public void update(Category c) {
+		try {
+			conn = DB.getConnection();
+			String sql = "update _category set name = ?, descr = ? where id = ?";
+			ps = DB.getPStatement(conn, sql);
+			ps.setString(1, c.getName());
+			ps.setString(2, c.getDescr());
+			ps.setInt(3, c.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(ps);
+			DB.close(conn);
+		}
+	}
 
+	public Category loadById(int id) {
+		Category c = null;
+		try {
+			conn = DB.getConnection();
+
+			String sql = "select * from _category where id = " + id;
+			rs = DB.executeQuery(conn, sql);
+			if (rs.next()) {
+				c = new Category();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setDescr(rs.getString("descr"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(rs);
+			DB.close(conn);
+		}
+		return c;
 	}
 }

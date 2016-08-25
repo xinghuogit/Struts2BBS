@@ -199,15 +199,15 @@ public class DB {
 	 *            SQL语句
 	 * @return resultSet 返回的结果集 resultSet.next(); 一整条数据
 	 */
-	public static ResultSet executeQuery(Connection connection, String sql) {
+	public static ResultSet executeQuery(Connection conn, String sql) {
 		System.out.println("sql:" + sql);
-		ResultSet resultSet = null;
+		ResultSet rs = null;
 		try {
-			resultSet = connection.createStatement().executeQuery(sql);
+			rs = conn.createStatement().executeQuery(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return resultSet;
+		return rs;
 	}
 
 	/**

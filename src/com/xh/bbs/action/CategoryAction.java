@@ -18,6 +18,7 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.xh.bbs.model.Category;
+import com.xh.bbs.service.CategoryService;
 
 /**
  * @filename 文件名称：CategoryAction1.java
@@ -29,7 +30,10 @@ public class CategoryAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private Category category;
 	private List<Category> categorys = null;
+	private CategoryService cs = new CategoryService();
+	private int id;
 
 	/**
 	 * 获取论坛列表
@@ -37,34 +41,63 @@ public class CategoryAction extends ActionSupport {
 	 * @return
 	 */
 	public String list() {
-		System.out.println("list");
+		categorys = cs.list();
 		return SUCCESS;
 	}
-	
+
 	public String addInput() {
-		System.out.println("addInput");
-		return INPUT;
-	}
-	
-	public String add() {
-		System.out.println("add");
-		return INPUT;
-	}
-	
-	public String updateInput() {
-		System.out.println("updateInput");
-		return INPUT;
-	}
-	
-	public String update() {
-		System.out.println("update");
-		return INPUT;
-	}
-	
-	public String delete() {
-		System.out.println("delete");
 		return INPUT;
 	}
 
-	
+	public String add() {
+		cs.add(category);
+		return INPUT;
+	}
+
+	public String updateInput() {
+		this.category = this.cs.loadById(id);
+		return INPUT;
+	}
+
+	public String update() {
+		cs.update(category);
+		return INPUT;
+	}
+
+	public String delete() {
+		cs.deleteById(id);
+		return INPUT;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Category> getCategorys() {
+		return categorys;
+	}
+
+	public void setCategorys(List<Category> categorys) {
+		this.categorys = categorys;
+	}
+
+	public CategoryService getCs() {
+		return cs;
+	}
+
+	public void setCs(CategoryService cs) {
+		this.cs = cs;
+	}
 }
