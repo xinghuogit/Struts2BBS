@@ -17,16 +17,30 @@
 
 	<!-- 开发模式 -->
 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="bbsstruts2"></constant>
+
+	<package name="bbs" extends="struts-default">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	</package>
 
 
-	<package name="admin" namespace="/admin" extends="struts-default">
+	<package name="admin" namespace="/admin" extends="bbs">
 		<action name="*_*" class="com.xh.bbs.action.{1}Action" method="{2}">
 			<result>/admin/{1}_{2}.jsp</result>
 			<result name="input">/admin/{1}_{2}.jsp</result>
+			<!-- <exception-mapping result="error" exception="java.lang.Exception"></exception-mapping> 
+				<result name="error">/error.jsp</result> -->
 		</action>
 	</package>
 
 	<package name="front" namespace="/" extends="struts-default">
+		<default-action-ref name="index"></default-action-ref> <!-- BUG -->
 		<action name="index" class="com.xh.bbs.action.CategoryAction"
 			method="list">
 			<result>/index.jsp</result>

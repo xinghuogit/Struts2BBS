@@ -17,6 +17,7 @@ package com.xh.bbs.service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class CategoryService {
 	// return cs;
 	// }
 
-	public void add(Category c) {
+	public void add(Category c) throws Exception {
 		try {
 			conn = DB.getConnection();
 			String sql = "insert into _category values(null, ?, ?)";
@@ -50,20 +51,20 @@ public class CategoryService {
 			ps.setString(1, c.getName());
 			ps.setString(2, c.getDescr());
 			ps.executeUpdate();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			throw (e);
 		} finally {
 			DB.close(ps);
 			DB.close(conn);
 		}
 	}
 
-	public List<Category> list() {
+	public List<Category> list() throws Exception {
 		List<Category> list = new ArrayList<Category>();
 		Category c = null;
 		try {
 			conn = DB.getConnection();
-
 			String sql = "select * from _category";
 			rs = DB.executeQuery(conn, sql);
 			while (rs.next()) {
@@ -75,6 +76,7 @@ public class CategoryService {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw (e);
 		} finally {
 			DB.close(rs);
 			DB.close(conn);

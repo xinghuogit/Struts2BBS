@@ -15,6 +15,8 @@
 package com.xh.bbs.action;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.xh.bbs.model.Category;
@@ -34,13 +36,20 @@ public class CategoryAction extends ActionSupport {
 	private List<Category> categorys = null;
 	private CategoryService cs = new CategoryService();
 	private int id;
+	private String zh;
+	private String en;
 
 	/**
 	 * 获取论坛列表
 	 * 
 	 * @return
+	 * @throws Exception
 	 */
-	public String list() {
+	public String list() throws Exception {
+		ResourceBundle res = ResourceBundle.getBundle("app", Locale.US);
+		en = res.getString("welcome.msg");
+		res = ResourceBundle.getBundle("app", Locale.CHINA);
+		zh = res.getString("welcome.msg");
 		categorys = cs.list();
 		return SUCCESS;
 	}
@@ -49,7 +58,7 @@ public class CategoryAction extends ActionSupport {
 		return INPUT;
 	}
 
-	public String add() {
+	public String add() throws Exception {
 		cs.add(category);
 		return INPUT;
 	}
@@ -100,4 +109,21 @@ public class CategoryAction extends ActionSupport {
 	public void setCs(CategoryService cs) {
 		this.cs = cs;
 	}
+
+	public String getZh() {
+		return zh;
+	}
+
+	public void setZh(String zh) {
+		this.zh = zh;
+	}
+
+	public String getEn() {
+		return en;
+	}
+
+	public void setEn(String en) {
+		this.en = en;
+	}
+
 }

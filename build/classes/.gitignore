@@ -1,1 +1,10 @@
 /com/
+/struts.xml
+/app_en_US.properties
+/app_zh_CN.properties
+/package_US.properties/
+/struts2bbs_en_US_properties
+/struts2bbs_en_US.properties
+/struts2bbs_zh_CN.properties
+/bbsstruts2_en_US.properties
+/bbsstruts2_zh_CN.properties
