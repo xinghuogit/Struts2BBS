@@ -15,5 +15,9 @@
 		<input type="submit" value="<s:property value="getText('login.signin')"/>" />
 		<s:debug></s:debug>
 	</form>
+	
+	<a href="admin/lang?request_locale=en_US">英语</a>
+	<a href="admin/lang?request_locale=zh_CN">汉语</a>
+	
 </body>
 </html>

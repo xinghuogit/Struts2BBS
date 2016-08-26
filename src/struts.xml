@@ -37,8 +37,12 @@
 			<!-- <exception-mapping result="error" exception="java.lang.Exception"></exception-mapping> 
 				<result name="error">/error.jsp</result> -->
 		</action>
+		
+			<action name="lang" class="com.xh.bbs.action.LangAction">
+			<result>/admin/Login_input.jsp</result>
+		</action>
 	</package>
-
+	
 	<package name="front" namespace="/" extends="struts-default">
 		<default-action-ref name="index"></default-action-ref> <!-- BUG -->
 		<action name="index" class="com.xh.bbs.action.CategoryAction"

@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登录成功</title>
+<title>登录成功1</title>
 </head>
 <body>
-	欢迎你
-	<s:property value="username" />
+	<s:text name="welcome.msg">
+		<s:param value="username"></s:param>
+	</s:text>
 </body>
 </html>

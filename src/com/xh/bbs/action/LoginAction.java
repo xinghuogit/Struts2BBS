@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * @filename 文件名称：LoginAction.java
- * @contents 内容摘要：
+ * @contents 内容摘要：登录 以及语言
  */
 public class LoginAction extends ActionSupport {
 	private String username;
